@@ -1,25 +1,28 @@
 import { Node } from "./classes/Node/Node.js"
+import { generateHtmlFromDescription } from "./functions/generateHtmlFromDescription/generateHtmlFromDescription.js"
+
 let message: string = "Hello New Brave World!"
 console.log(message)
 
-const node = new Node({ positionX: 10, positionY: 20 })
-node.print()
+const node0 = new Node({
+    positionX: 100,
+    positionY: 200,
+    height: 50,
+    width: 100,
+    renderFunction: generateHtmlFromDescription,
+})
 
-// let div = document.createElement('test')
+const node1 = new Node({
+    positionX: 150,
+    positionY: 400,
+    height: 100,
+    width: 50,
+    renderFunction: generateHtmlFromDescription,
+})
 
-// div.className = `window-container`
-// div.id = `window-container-${id}`
-// div.innerHTML = this.renderHtml
-// container.append(div)
 
-// let div = document.createElement("div")
-// let p = document.createElement("p")
-// div.append("Some text", p)
 
-var tag = document.createElement("div")
-var text = document.createTextNode("Test text")
-tag.appendChild(text)
-var element = document.getElementById("canvas")
-element?.appendChild(tag)
+const canvas = document.querySelector("#canvas")
 
-// console.log(div.childNodes) // NodeList [ #text "Some text", <p> ]
+canvas === null ? null : (canvas.insertAdjacentHTML('beforeend', node0.render()))
+canvas === null ? null : (canvas.insertAdjacentHTML('beforeend', node1.render()))
