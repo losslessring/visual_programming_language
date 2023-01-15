@@ -4,5 +4,4 @@ export interface NodeSetup {
     positionY: number
     height: number
     width: number
-    renderFunction: Function
 }

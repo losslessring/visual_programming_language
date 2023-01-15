@@ -8,7 +8,6 @@ export class Node implements Container {
     private positionY: number
     private height: number
     private width: number
-    private renderFunction: Function
 
     
 
@@ -18,8 +17,7 @@ export class Node implements Container {
         this.positionX = setup.positionX
         this.positionY = setup.positionY
         this.height = setup.height
-        this.width = setup.width,
-        this.renderFunction = setup.renderFunction
+        this.width = setup.width
     }
 
     getId(){
@@ -50,18 +48,14 @@ export class Node implements Container {
 
     }
 
-    setRenderFunction(renderFunction: Function) {
-        this.renderFunction = renderFunction
-    }
-
-    render() {
-        return this.renderFunction({
+    getRenderProps() {
+        return {    
             id: this.id,
             positionX: this.positionX,
             positionY: this.positionY,
             height: this.height,
             width: this.width
-        })
+        }
     }
 
     print() {

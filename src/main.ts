@@ -1,5 +1,5 @@
 import { Node } from "./classes/Node/Node.js"
-import { generateHtmlFromDescription } from "./functions/generateHtmlFromDescription/generateHtmlFromDescription.js"
+import { generateHtmlFromDescription } from "./functions/view/generateHtmlFromDescription/generateHtmlFromDescription.js"
 
 import { dragElement } from "./functions/behaviour/dragElement/dragElement.js"
 import { addListenerOnInputForm } from './functions/behaviour/addListenerOnInputForm/addListenerOnInputForm.js'
@@ -13,7 +13,6 @@ const node0 = new Node({
     positionY: 200,
     height: 100,
     width: 100,
-    renderFunction: generateHtmlFromDescription,
 })
 
 const node1 = new Node({
@@ -22,25 +21,21 @@ const node1 = new Node({
     positionY: 400,
     height: 100,
     width: 100,
-    renderFunction: generateHtmlFromDescription,
 })
 
 
 
 const canvas = document.querySelector("#canvas")
 
-canvas === null ? null : (canvas.insertAdjacentHTML('beforeend', node0.render()))
-canvas === null ? null : (canvas.insertAdjacentHTML('beforeend', node1.render()))
+
+canvas === null ? null : (canvas.insertAdjacentHTML('beforeend', generateHtmlFromDescription((node0.getRenderProps()))))
+canvas === null ? null : (canvas.insertAdjacentHTML('beforeend', generateHtmlFromDescription((node1.getRenderProps()))))
 
 
 
 console.log(node0.getId())
 console.log(node1.getId())
 
-//console.log(document.getElementById(`node_title_${node1.getId().toString()}`)?.id)
-
-//dragElement(document.getElementById(`${node0.getId().toString()}`), "node_title_");
-//dragElement(document.getElementById(`${node1.getId().toString()}`), "node_title_");
 
 dragElement(document.getElementById(`node_container_${node0.getId().toString()}`), document.getElementById(`node_title_${node0.getId().toString()}`))
 dragElement(document.getElementById(`node_container_${node1.getId().toString()}`), document.getElementById(`node_title_${node1.getId().toString()}`))
