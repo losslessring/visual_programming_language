@@ -9,7 +9,25 @@ export function generateHtmlFromDescription({id, positionX, positionY, height, w
                     <input type="text" id="node_code_input_${id}" style="width: 100%;">    
                 </form>
                 </div>
-                
+                <div draggable="true" class="node-output-dot-parent"
+                    style="
+                        position: absolute;
+                        top: 0px;
+                        right: -10px;
+                        padding: 3px;
+                        cursor: alias;
+                ">
+                    <div class="node-output-dot" 
+                        style="
+                            width: 16px;
+                            height: 16px;
+                            background-color: #c3fa9e;
+                            border-radius: 50%;
+                            box-sizing: border-box;
+                            border: 2px solid #6a6a6a;
+                    ">
+                    </div>
+                </div>
             </div>
             
             `
