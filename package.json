@@ -7,6 +7,6 @@
   "scripts": {
     "build": "tsc --build",
     "clean": "tsc --build --clean",
-    "start": "nodemon -e ts  --exec \"npm run build\""
+    "start": "nodemon -e ts,js  --ignore dist/ --exec \"npm run build\""
   }
 }

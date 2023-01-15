@@ -3,7 +3,7 @@ import { generateHtmlFromDescription } from "./functions/generateHtmlFromDescrip
 
 import {dragElement} from "./functions/dragElement/dragElement.js"
 
-let message: string = "Hello New Brave World!"
+let message = "Hello New Brave World!"
 console.log(message)
 
 const node0 = new Node({
@@ -36,6 +36,20 @@ canvas === null ? null : (canvas.insertAdjacentHTML('beforeend', node1.render())
 console.log(node0.getId())
 console.log(node1.getId())
 
-dragElement(document.getElementById(`node_container_${node0.getId().toString()}`));
-dragElement(document.getElementById(`node_container_${node1.getId().toString()}`));
+//console.log(document.getElementById(`node_title_${node1.getId().toString()}`)?.id)
 
+//dragElement(document.getElementById(`${node0.getId().toString()}`), "node_title_");
+//dragElement(document.getElementById(`${node1.getId().toString()}`), "node_title_");
+
+dragElement(document.getElementById(`node_container_${node0.getId().toString()}`), document.getElementById(`node_title_${node0.getId().toString()}`))
+dragElement(document.getElementById(`node_container_${node1.getId().toString()}`), document.getElementById(`node_title_${node1.getId().toString()}`))
+
+var codeInput = document.getElementById(`node_code_input_${node0.getId().toString()}`)
+
+document.getElementById(`node_code_form_${node0.getId().toString()}`).addEventListener('submit', function (e) {
+
+    // prevent the normal submission of the form
+    e.preventDefault();
+
+    console.log(eval(codeInput.value))
+});
