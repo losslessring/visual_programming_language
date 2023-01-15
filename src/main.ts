@@ -1,7 +1,8 @@
 import { Node } from "./classes/Node/Node.js"
 import { generateHtmlFromDescription } from "./functions/generateHtmlFromDescription/generateHtmlFromDescription.js"
 
-import {dragElement} from "./functions/dragElement/dragElement.js"
+import { dragElement } from "./functions/behaviour/dragElement/dragElement.js"
+import { addListenerOnInputForm } from './functions/behaviour/addListenerOnInputForm/addListenerOnInputForm.js'
 
 let message = "Hello New Brave World!"
 console.log(message)
@@ -44,12 +45,16 @@ console.log(node1.getId())
 dragElement(document.getElementById(`node_container_${node0.getId().toString()}`), document.getElementById(`node_title_${node0.getId().toString()}`))
 dragElement(document.getElementById(`node_container_${node1.getId().toString()}`), document.getElementById(`node_title_${node1.getId().toString()}`))
 
-var codeInput = document.getElementById(`node_code_input_${node0.getId().toString()}`)
 
-document.getElementById(`node_code_form_${node0.getId().toString()}`).addEventListener('submit', function (e) {
 
-    // prevent the normal submission of the form
-    e.preventDefault();
+addListenerOnInputForm({ form: document.getElementById(`node_code_form_${node0.getId().toString()}`),
+                         input: <HTMLInputElement>document.getElementById(`node_code_input_${node0.getId().toString()}`),
+                         event: 'submit',
+                         onEventFunction: (inputValue: string) => console.log(eval(inputValue))
+})
 
-    console.log(eval(codeInput.value))
-});
+addListenerOnInputForm({ form: document.getElementById(`node_code_form_${node1.getId().toString()}`),
+                         input: <HTMLInputElement>document.getElementById(`node_code_input_${node1.getId().toString()}`),
+                         event: 'submit',
+                         onEventFunction: (inputValue: string) => console.log(eval(inputValue))
+})
