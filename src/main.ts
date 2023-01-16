@@ -3,6 +3,8 @@ import { generateHtmlFromDescription } from "./functions/view/generateHtmlFromDe
 
 import { dragElement } from "./functions/behaviour/dragElement/dragElement.js"
 import { addListenerOnInputForm } from './functions/behaviour/addListenerOnInputForm/addListenerOnInputForm.js'
+import { Path } from "./interfaces/Path/Path.js"
+import { generateSvgPathFromDescription } from "./functions/view/generateSvgPathFromDescription/generateSvgPathFromDescription.js"
 
 let message = "Hello New Brave World!"
 console.log(message)
@@ -23,14 +25,23 @@ const node1 = new Node({
     width: 100,
 })
 
+const line0: Path = {
+    id: Math.floor(100000000 + Math.random() * 900000000),
+    beginX: 200,
+    beginY: 200,
+    endX: 500,
+    endY: 500
+}
 
 
 const canvas = document.querySelector("#canvas")
 
 
 canvas === null ? null : (canvas.insertAdjacentHTML('beforeend', generateHtmlFromDescription((node0.getRenderProps()))))
-canvas === null ? null : (canvas.insertAdjacentHTML('beforeend', generateHtmlFromDescription((node1.getRenderProps()))))
+//canvas === null ? null : (canvas.insertAdjacentHTML('beforeend', generateHtmlFromDescription((node1.getRenderProps()))))
+canvas?.insertAdjacentHTML('beforeend', generateHtmlFromDescription((node1.getRenderProps())))
 
+canvas?.insertAdjacentHTML('beforeend', generateSvgPathFromDescription(line0))
 
 
 console.log(node0.getId())

@@ -1,4 +1,4 @@
-export interface Render {
+export interface RenderNode {
     id: number
     positionX: number
     positionY: number
