@@ -4,7 +4,7 @@ import { generateHtmlFromDescription } from "./functions/view/generateHtmlFromDe
 import { dragElement } from "./functions/behaviour/dragElement/dragElement.js"
 import { addListenerOnInputForm } from './functions/behaviour/addListenerOnInputForm/addListenerOnInputForm.js'
 import { Path } from "./interfaces/Path/Path.js"
-import { generateSvgPathFromDescription } from "./functions/view/generateSvgPathFromDescription/generateSvgPathFromDescription.js"
+import { createSvgLine } from "./functions/view/createSvgLine/createSvgLine.js"
 
 let message = "Hello New Brave World!"
 console.log(message)
@@ -27,8 +27,8 @@ const node1 = new Node({
 
 const line0: Path = {
     id: Math.floor(100000000 + Math.random() * 900000000),
-    beginX: 200,
-    beginY: 200,
+    beginX: 0,
+    beginY: 0,
     endX: 500,
     endY: 500
 }
@@ -38,10 +38,9 @@ const canvas = document.querySelector("#canvas")
 
 
 canvas === null ? null : (canvas.insertAdjacentHTML('beforeend', generateHtmlFromDescription((node0.getRenderProps()))))
-//canvas === null ? null : (canvas.insertAdjacentHTML('beforeend', generateHtmlFromDescription((node1.getRenderProps()))))
 canvas?.insertAdjacentHTML('beforeend', generateHtmlFromDescription((node1.getRenderProps())))
 
-canvas?.insertAdjacentHTML('beforeend', generateSvgPathFromDescription(line0))
+// canvas?.insertAdjacentHTML('beforeend', createSvgLine(line0))
 
 
 console.log(node0.getId())
@@ -64,3 +63,22 @@ addListenerOnInputForm({ form: document.getElementById(`node_code_form_${node1.g
                          event: 'submit',
                          onEventFunction: (inputValue: string) => console.log(eval(inputValue))
 })
+
+
+const el0 = document.getElementById(`node_output_${node0.getId().toString()}`)
+el0?.addEventListener("dragstart", (e) => console.log(e))
+//el0?.addEventListener("dragend", (e) => console.log(e))
+// el0?.addEventListener('dragenter', (e) => console.log(e))
+//el0?.addEventListener('dragleave', (e) => console.log(e))
+//el0?.addEventListener('dragend', (e) => console.log(e));
+el0?.addEventListener('drop', (e) => console.log(e));
+
+const el1 = document.getElementById(`node_output_${node1.getId().toString()}`)
+// el?.addEventListener("dragstart", (e) => console.log(`x:${e.x} y:${e.y}`))
+//el1?.addEventListener("dragstart", (e) => console.log(e))
+//el1?.addEventListener("dragend", (e) => console.log(e))
+// el1?.addEventListener('dragenter', (e) => console.log(e))
+//el1?.addEventListener('dragleave', (e) => console.log(e))
+// el1?.addEventListener('dragend', (e) => console.log(e));
+// el1?.addEventListener('drop', (e) => console.log(e));
+
