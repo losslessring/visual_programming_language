@@ -37,7 +37,7 @@ export function generateHtmlFromDescription({id, positionX, positionY, height, w
                         right: -6px;
                         cursor: alias;
                 ">
-                    <div id="node_output_${id}" draggable="true"
+                    <div id="node_output_${id}"
                         style="
                             width: 16px;
                             height: 16px;
@@ -55,7 +55,7 @@ export function generateHtmlFromDescription({id, positionX, positionY, height, w
                         right: 94px;
                         cursor: alias;
                 ">
-                    <div id="node_input_${id}" draggable="true"
+                    <div id="node_input_${id}"
                         style="
                             width: 16px;
                             height: 16px;

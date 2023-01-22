@@ -1,6 +1,6 @@
 import { Path } from "src/interfaces/Path/Path.js"
 
-export class Line implements Path {
+export class Line {
     id: number
     beginX: number
     beginY: number
