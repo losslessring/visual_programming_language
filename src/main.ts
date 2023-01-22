@@ -48,11 +48,26 @@ workspace?.insertAdjacentHTML('beforeend', generateHtmlFromDescription((node1.ge
 console.log(node0.getId())
 console.log(node1.getId())
 
+const nodesConnector = new TwoNodesConnector({workspace})
 
 dragElement(document.getElementById(`node_container_${node0.getId().toString()}`), document.getElementById(`node_title_${node0.getId().toString()}`))
 dragElement(document.getElementById(`node_container_${node1.getId().toString()}`), document.getElementById(`node_title_${node1.getId().toString()}`))
 
+document.getElementById(`node_container_${node0.getId().toString()}`)?.addEventListener(
+    "click",
+    () => {
+        const connection = nodesConnector.getConnection()
+        connection?.update()
+    }
+)
 
+document.getElementById(`node_container_${node1.getId().toString()}`)?.addEventListener(
+    "click",
+    () => {
+        const connection = nodesConnector.getConnection()
+        connection?.update()
+    }
+)
 
 addListenerOnInputForm({ form: document.getElementById(`node_code_form_${node0.getId().toString()}`),
                          input: <HTMLInputElement>document.getElementById(`node_code_input_${node0.getId().toString()}`),
@@ -66,21 +81,16 @@ addListenerOnInputForm({ form: document.getElementById(`node_code_form_${node1.g
                          onEventFunction: (inputValue: string) => console.log(eval(inputValue))
 })
 
-const nodesConnector = new TwoNodesConnector(({fromElement, toElement}: any) => {
-    const id = Math.floor(100000000 + Math.random() * 900000000)
+
+
+// const nodesConnector = new TwoNodesConnector(({fromElement, toElement}: any) => {
+    // const id = Math.floor(100000000 + Math.random() * 900000000)
     
-    const connection = new Connection({id, fromElement, toElement})
-    connection.initializeDraw(workspace)
-    connection.draw()
-    // workspace?.insertAdjacentHTML('beforeend', createSvgLine({ 
-    //     id, 
-    //     beginX: output.x, 
-    //     beginY:output.y, 
-    //     endX: input.x, 
-    //     endY: input.y
-    // }))
-}
-)
+    // const connection = new Connection({id, fromElement, toElement})
+    // connection.initializeDraw(workspace)
+    // connection.draw()
+// }
+// )
 
 // let connectionObserver: any = {
 //     _input: undefined,
