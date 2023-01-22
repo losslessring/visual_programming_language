@@ -11,8 +11,6 @@ export class Connection {
         this.id = id
         this.fromElement = fromElement
         this.toElement = toElement
-        console.log(fromElement)
-        console.log(toElement)
     }
 
     initializeDraw(workspace: any) {

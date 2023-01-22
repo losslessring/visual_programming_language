@@ -28,10 +28,22 @@ export class TwoNodesConnector {
 
 
     setInput(e: any) { 
-        console.log(this)
         if (this.output) {
-            this.createConnection({fromElement: this.output.srcElement, toElement: e.srcElement})
+
+            const currentFromElement = this.output.target as any
+            const currentToElement = e.target as any
+            
+            // console.log(currentFromElement.id)
+            // console.log(currentToElement.id)
+
+            // console.log(this.getConnections())
+            if (!this.getConnections().find(connection => connection.fromElement.id === currentFromElement.id && connection.toElement.id === currentToElement.id)) {
+                this.createConnection({fromElement: this.output.target, toElement: e.target})
+            }
+            
             this.setOutput(undefined)
+            
+            
             
         }
         
