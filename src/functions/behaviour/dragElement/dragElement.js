@@ -1,4 +1,4 @@
-export function dragElement(element, draggableElement) {
+export function dragElement(element, draggableElement, onDrag) {
     let pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0
 
     if (draggableElement) {
@@ -31,6 +31,7 @@ export function dragElement(element, draggableElement) {
       // set the element's new position:
       element.style.top = (element.offsetTop - pos2) + "px"
       element.style.left = (element.offsetLeft - pos1) + "px"
+      onDrag(e)
     }
   
     function closeDragElement() {

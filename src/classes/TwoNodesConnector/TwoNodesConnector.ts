@@ -5,27 +5,25 @@ export class TwoNodesConnector {
     private input: MouseEvent | undefined
     private output: MouseEvent | undefined
     private workspace: any
-    private connection: Connection | undefined 
-    // public onConnection: Function | undefined
+    private connections: Connection[]
 
-    // constructor(f: Function) {
-    //     this.onConnection = f
-    // }
 
     constructor({workspace}: any) {
         this.workspace = workspace
+        this.connections = []
     }
 
     private createConnection({fromElement, toElement}: any) {
         const id = Math.floor(100000000 + Math.random() * 900000000)
         
-        this.connection = new Connection({id, fromElement, toElement})
-        this.connection.initializeDraw(this.workspace)
-        this.connection.draw()
+        const connection = new Connection({id, fromElement, toElement})
+        connection.initializeDraw(this.workspace)
+        connection.draw()
+        this.connections?.push(connection)
     }
 
-    getConnection() {
-        return this.connection
+    getConnections() {
+        return this.connections
     }
 
 

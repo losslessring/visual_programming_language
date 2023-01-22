@@ -11,7 +11,6 @@ export class Connection {
         this.id = id
         this.fromElement = fromElement
         this.toElement = toElement
-        // console.log(id)
         console.log(fromElement)
         console.log(toElement)
     }
@@ -64,7 +63,7 @@ export class Connection {
             .querySelector(`#svg_container_${this.id}`)
             ?.insertAdjacentHTML(
                 "beforeend",
-                `<line id="svg_line_${this.id}" x1="${this.fromX}" y1="${this.fromY}" x2="${this.toX}" y2="${this.toY}" stroke="black" />`
+                `<line id="svg_line_${this.id}" x1="${this.fromX}" y1="${this.fromY}" x2="${this.toX}" y2="${this.toY}" stroke="black"  stroke-width="1"/>`
             )
     }
 

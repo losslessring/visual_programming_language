@@ -50,24 +50,35 @@ console.log(node1.getId())
 
 const nodesConnector = new TwoNodesConnector({workspace})
 
-dragElement(document.getElementById(`node_container_${node0.getId().toString()}`), document.getElementById(`node_title_${node0.getId().toString()}`))
-dragElement(document.getElementById(`node_container_${node1.getId().toString()}`), document.getElementById(`node_title_${node1.getId().toString()}`))
+const onDrag = (e: any) => {
+    nodesConnector.getConnections().forEach(connection => connection?.update())
+}
 
-document.getElementById(`node_container_${node0.getId().toString()}`)?.addEventListener(
-    "click",
-    () => {
-        const connection = nodesConnector.getConnection()
-        connection?.update()
-    }
-)
+dragElement(document.getElementById(`node_container_${node0.getId().toString()}`), document.getElementById(`node_title_${node0.getId().toString()}`), onDrag)
+dragElement(document.getElementById(`node_container_${node1.getId().toString()}`), document.getElementById(`node_title_${node1.getId().toString()}`), onDrag)
 
-document.getElementById(`node_container_${node1.getId().toString()}`)?.addEventListener(
-    "click",
-    () => {
-        const connection = nodesConnector.getConnection()
-        connection?.update()
-    }
-)
+// document.addEventListener(
+//     "drag",
+//     (e) => {  
+//     nodesConnector.getConnections().forEach(connection => connection?.update())
+    
+// })
+
+// document.getElementById(`node_container_${node0.getId().toString()}`)?.addEventListener(
+//     "click",
+//     () => {
+//         const connection = nodesConnector.getConnection()
+//         connection?.update()
+//     }
+// )
+
+// document.getElementById(`node_container_${node1.getId().toString()}`)?.addEventListener(
+//     "click",
+//     () => {
+//         const connection = nodesConnector.getConnection()
+//         connection?.update()
+//     }
+// )
 
 addListenerOnInputForm({ form: document.getElementById(`node_code_form_${node0.getId().toString()}`),
                          input: <HTMLInputElement>document.getElementById(`node_code_input_${node0.getId().toString()}`),
