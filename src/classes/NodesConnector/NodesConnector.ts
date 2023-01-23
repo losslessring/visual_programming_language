@@ -1,6 +1,6 @@
 import { Connection } from "../Connection/Connection.js"
 
-export class TwoNodesConnector {
+export class NodesConnector {
 
     private input: MouseEvent | undefined
     private output: MouseEvent | undefined
@@ -14,9 +14,16 @@ export class TwoNodesConnector {
     }
 
     private createConnection({fromElement, toElement}: any) {
-        const id = Math.floor(100000000 + Math.random() * 900000000)
         
-        const connection = new Connection({id, fromElement, toElement})
+        // console.log(fromElement.id.replace("node_output_", ""))
+        // console.log(toElement.id.replace("node_input_", ""))
+        
+        const fromId = fromElement.getAttribute('data-node_id')
+        const toId = toElement.getAttribute('data-node_id')
+
+        // const id = Math.floor(100000000 + Math.random() * 900000000)
+        
+        const connection = new Connection({id: `${fromId}_${toId}`, fromElement, toElement})
         connection.initializeDraw(this.workspace)
         connection.draw()
         this.connections?.push(connection)

@@ -1,5 +1,5 @@
 export class Connection {
-    id: number
+    id: string
     fromElement: any
     toElement: any
     private fromX: number | undefined

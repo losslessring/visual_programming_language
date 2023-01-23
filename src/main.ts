@@ -5,7 +5,7 @@ import { dragElement } from "./functions/behaviour/dragElement/dragElement.js"
 import { addListenerOnInputForm } from './functions/behaviour/addListenerOnInputForm/addListenerOnInputForm.js'
 import { Path } from "./interfaces/Path/Path.js"
 import { createSvgLine } from "./functions/view/createSvgLine/createSvgLine.js"
-import { TwoNodesConnector } from "./classes/TwoNodesConnector/TwoNodesConnector.js"
+import { NodesConnector } from "./classes/NodesConnector/NodesConnector.js"
 import { Connection } from "./classes/Connection/Connection.js"
 
 //let message = "Hello New Brave World!"
@@ -27,6 +27,7 @@ const node1 = new Node({
     width: 100,
 })
 
+const nodes = [node0, node1]
 
 const workspace = document.querySelector("#workspace")
 
@@ -38,7 +39,7 @@ workspace?.insertAdjacentHTML('beforeend', generateHtmlFromDescription((node1.ge
 //console.log(node0.getId())
 //console.log(node1.getId())
 
-const nodesConnector = new TwoNodesConnector({workspace})
+const nodesConnector = new NodesConnector({workspace})
 
 const onDrag = (e: any) => {
     nodesConnector.getConnections().forEach(connection => connection?.update())
@@ -76,4 +77,12 @@ el1?.addEventListener("mouseup", (e) => {
     nodesConnector.setInput(e)
     
 })
+
+
+document
+    .getElementById(`node_action_${node0.getId().toString()}`)
+    ?.addEventListener("mousedown", (e) => {
+        console.log(node0)
+})
+
 

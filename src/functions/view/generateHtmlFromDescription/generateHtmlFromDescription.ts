@@ -38,7 +38,7 @@ export function generateHtmlFromDescription({id, positionX, positionY, height, w
                         right: -6px;
                         cursor: alias;
                 ">
-                    <div id="node_output_${id}"
+                    <div id="node_output_${id}" data-node_id=${id}
                         style="
                             width: 16px;
                             height: 16px;
@@ -56,7 +56,7 @@ export function generateHtmlFromDescription({id, positionX, positionY, height, w
                         right: 94px;
                         cursor: alias;
                 ">
-                    <div id="node_input_${id}"
+                    <div id="node_input_${id}" data-node_id=${id}
                         style="
                             width: 16px;
                             height: 16px;
@@ -67,13 +67,14 @@ export function generateHtmlFromDescription({id, positionX, positionY, height, w
                     ">
                     </div>
                 </div>
-                <div id="node_action_container_${id}>
-                    <div id="node_action_${id} style="
+                <div id="node_action_container_${id}">
+                    <div id="node_action_${id}" style="
                         background-color: #c3fa9e;
-                        cursor: grabbing;
-                        border-radius: 6px 6px 0 0; 
+                        cursor: default;
+                        border-radius: 6px 6px 6px 6px; 
                         padding: 2px 0px 2px 0px; 
                         text-align: center;
+                        margin: 3px 1px 0px 1px;
                     ">
                         action
                     </div>

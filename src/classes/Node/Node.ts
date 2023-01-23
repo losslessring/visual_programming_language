@@ -9,7 +9,7 @@ export class Node {
     private height: number
     private width: number
     private input: Node | undefined
-    private output: Node
+    private output: Node | undefined
 
     
 
@@ -20,7 +20,6 @@ export class Node {
         this.positionY = setup.positionY
         this.height = setup.height
         this.width = setup.width
-        this.output = this
     }
 
     getId(){
@@ -40,7 +39,11 @@ export class Node {
     }
 
     getOutput() {
-        return this
+        return this.output
+    }
+
+    setOutput(node: Node) {
+        this.output = node
     }
 
 
