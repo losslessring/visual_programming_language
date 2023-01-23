@@ -30,6 +30,7 @@ export function generateHtmlFromDescription({id, positionX, positionY, height, w
                     ">    
                 </form>
                 </div>
+               
                 <div id="node_output_container_${id}"
                     style="
                         position: absolute;
@@ -64,6 +65,17 @@ export function generateHtmlFromDescription({id, positionX, positionY, height, w
                             box-sizing: border-box;
                             border: 2px solid #6a6a6a;
                     ">
+                    </div>
+                </div>
+                <div id="node_action_container_${id}>
+                    <div id="node_action_${id} style="
+                        background-color: #c3fa9e;
+                        cursor: grabbing;
+                        border-radius: 6px 6px 0 0; 
+                        padding: 2px 0px 2px 0px; 
+                        text-align: center;
+                    ">
+                        action
                     </div>
                 </div>
             </div>

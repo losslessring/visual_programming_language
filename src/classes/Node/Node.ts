@@ -1,13 +1,15 @@
 import { Container } from "src/interfaces/Container/Container.js"
 import { NodeSetup } from "src/interfaces/NodeSetup/NodeSetup.js"
 
-export class Node implements Container {
+export class Node {
     
     private id: number
     private positionX: number
     private positionY: number
     private height: number
     private width: number
+    private input: Node | undefined
+    private output: Node
 
     
 
@@ -18,6 +20,7 @@ export class Node implements Container {
         this.positionY = setup.positionY
         this.height = setup.height
         this.width = setup.width
+        this.output = this
     }
 
     getId(){
@@ -28,25 +31,19 @@ export class Node implements Container {
         this.id = id
     }
 
-    setPositionX(x: number): void {
-        this.positionX = x
+    getInput() {
+        return this.input
     }
 
-    setPositionY(y: number): void {
-        this.positionY = y
+    setInput(node: Node) {
+        this.input = node
     }
 
-    setHeight(arg: number): void {
-
+    getOutput() {
+        return this
     }
 
-    setWidth(arg: number): void {
 
-    }
-
-    setColor(arg: number): void {
-
-    }
 
     getRenderProps() {
         return {    
