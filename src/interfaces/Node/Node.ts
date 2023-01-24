@@ -14,7 +14,6 @@ export interface Node {
 
     setOutput(node: Node): void
 
-    getRenderProps(): NodeSetup
 
-    print(): void
+    // print(): void
 }

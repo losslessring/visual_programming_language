@@ -38,6 +38,7 @@ export class NodesConnector {
         
         // console.log(this.nodes.find((node: any) => node.getId() === Number(fromId)))
         // console.log(this.nodes.find((node: any) => node.getId() === Number(toId)))
+        // console.log(this.nodes)
         const outputFromNode = this.nodes.find((node: any) => node.getId() === Number(fromId))
         const inputToNode = this.nodes.find((node: any) => node.getId() === Number(toId))
         if (inputToNode) {

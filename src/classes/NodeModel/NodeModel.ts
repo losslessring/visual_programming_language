@@ -5,22 +5,25 @@ import { NodeSetup } from "src/interfaces/NodeSetup/NodeSetup.js"
 export class NodeModel implements Node {
     
     private id: number
-    private positionX: number
-    private positionY: number
-    private height: number
-    private width: number
+    private root: boolean | undefined
+    // private positionX: number
+    // private positionY: number
+    // private height: number
+    // private width: number
+    private value: any
     private input: Node | undefined
     private output: Node[] | undefined
 
     
 
-    constructor(setup: NodeSetup) {
+    constructor(setup: any) {
         
         this.id = setup.id
-        this.positionX = setup.positionX
-        this.positionY = setup.positionY
-        this.height = setup.height
-        this.width = setup.width
+        // this.positionX = setup.positionX
+        // this.positionY = setup.positionY
+        // this.height = setup.height
+        // this.width = setup.width
+        this.value = setup.value
         this.output = []
     }
 
@@ -30,6 +33,14 @@ export class NodeModel implements Node {
 
     setId(id: number) {
         this.id = id
+    }
+
+    setRoot(flag: boolean) {
+        this.root = flag
+    }
+
+    isRoot() {
+        return this.root
     }
 
     getInput() {
@@ -48,19 +59,27 @@ export class NodeModel implements Node {
         this.output?.push(node)
     }
 
-
-
-    getRenderProps() {
-        return {    
-            id: this.id,
-            positionX: this.positionX,
-            positionY: this.positionY,
-            height: this.height,
-            width: this.width
-        }
+    getValue() {
+        return this.value
     }
 
-    print() {
-        console.log(`this.positionX: ${this.positionX} this.positionY: ${this.positionY}`)
+    setValue(value: any) {
+        this.value = value
     }
+
+
+
+    // getRenderProps() {
+    //     return {    
+    //         id: this.id,
+    //         positionX: this.positionX,
+    //         positionY: this.positionY,
+    //         height: this.height,
+    //         width: this.width
+    //     }
+    // }
+
+    // print() {
+    //     console.log(`this.positionX: ${this.positionX} this.positionY: ${this.positionY}`)
+    // }
 }

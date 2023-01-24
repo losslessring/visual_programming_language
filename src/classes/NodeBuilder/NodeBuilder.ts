@@ -8,31 +8,42 @@ import { Node } from "src/interfaces/Node/Node.js"
 
 export class NodeBuilder {
 
-    private node: Node
+    private node: NodeModel
 
-    getNode() {
-        return this.node
-    }
+    constructor({nodesConnector, root = false, value = undefined, positionX = 100, positionY = 200}: any) {
 
-
-    constructor({nodesConnector, positionX = 100, positionY = 200}: any) {
-
+        const id = Math.floor(100000000 + Math.random() * 900000000)
+        
         const node0 = new NodeModel({
-            id: Math.floor(100000000 + Math.random() * 900000000),
-            positionX,
-            positionY,
-            height: 100,
-            width: 100,
+            id,
+            value
+            // positionX,
+            // positionY,
+            // height: 100,
+            // width: 100,
         })
+
+        if (root) {
+            node0.setRoot(true)
+        }
 
         this.node = node0
 
-        nodesConnector.addNode(this.node)
+        nodesConnector.addNode(node0)
 
         const workspace = document.querySelector("#workspace")
 
+        const nodeRenderProps = {
+            id,
+            positionX,
+            positionY,
+            height: 100,
+            width: 100
 
-        workspace?.insertAdjacentHTML('beforeend', generateHtmlFromDescription((node0.getRenderProps())))
+        }
+
+
+        workspace?.insertAdjacentHTML('beforeend', generateHtmlFromDescription((nodeRenderProps)))
         
 
         const onDrag = (e: any) => {
@@ -46,7 +57,11 @@ export class NodeBuilder {
         addListenerOnInputForm({ form: document.getElementById(`node_code_form_${node0.getId().toString()}`),
                                 input: <HTMLInputElement>document.getElementById(`node_code_input_${node0.getId().toString()}`),
                                 event: 'submit',
-                                onEventFunction: (inputValue: string) => console.log(eval(inputValue))
+                                onEventFunction: (inputValue: string) => {
+                                    // console.log(eval(inputValue))
+                                    node0.setValue(inputValue)
+                                    console.log(node0.getValue())
+                                }
         })
 
 
@@ -69,5 +84,9 @@ export class NodeBuilder {
         })
 
 
+    }
+
+    getNode() {
+        return this.node
     }
 }
