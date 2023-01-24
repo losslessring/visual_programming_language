@@ -9,7 +9,7 @@ const workspace = document.querySelector("#workspace")
 
 const nodesConnector = new NodesConnector({workspace})
 
-const node0 = new NodeBuilder({nodesConnector})
-const node1 = new NodeBuilder({nodesConnector})
-const node2 = new NodeBuilder({nodesConnector})
+const node0 = new NodeBuilder({nodesConnector, positionX: 90, positionY: 180})
+const node1 = new NodeBuilder({nodesConnector, positionX: 350, positionY: 250})
+const node2 = new NodeBuilder({nodesConnector, positionX: 350, positionY: 100})
 

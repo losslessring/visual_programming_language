@@ -3,21 +3,18 @@ import { generateHtmlFromDescription } from "../../functions/view/generateHtmlFr
 
 import { dragElement } from "../../functions/behaviour/dragElement/dragElement.js"
 import { addListenerOnInputForm } from '../../functions/behaviour/addListenerOnInputForm/addListenerOnInputForm.js'
-import { Path } from "../../interfaces/Path/Path.js"
-import { createSvgLine } from "../../functions/view/createSvgLine/createSvgLine.js"
-import { NodesConnector } from "../NodesConnector/NodesConnector.js"
 import { Connection } from "../Connection/Connection.js"
 
 export class NodeBuilder {
 
 
 
-    constructor({nodesConnector}: any) {
+    constructor({nodesConnector, positionX = 100, positionY = 200}: any) {
 
         const node0 = new NodeModel({
             id: Math.floor(100000000 + Math.random() * 900000000),
-            positionX: 100,
-            positionY: 200,
+            positionX,
+            positionY,
             height: 100,
             width: 100,
         })
