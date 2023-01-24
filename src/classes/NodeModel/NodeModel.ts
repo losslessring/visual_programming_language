@@ -1,7 +1,8 @@
 import { Container } from "src/interfaces/Container/Container.js"
+import { Node } from "src/interfaces/Node/Node"
 import { NodeSetup } from "src/interfaces/NodeSetup/NodeSetup.js"
 
-export class Node {
+export class NodeModel implements Node {
     
     private id: number
     private positionX: number
