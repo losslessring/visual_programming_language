@@ -10,7 +10,7 @@ export interface Node {
 
     setInput(node: Node): void
 
-    getOutput(): Node | undefined
+    getOutput(): Node[] | undefined
 
     setOutput(node: Node): void
 

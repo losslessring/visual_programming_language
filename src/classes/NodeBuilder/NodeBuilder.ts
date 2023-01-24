@@ -4,9 +4,15 @@ import { generateHtmlFromDescription } from "../../functions/view/generateHtmlFr
 import { dragElement } from "../../functions/behaviour/dragElement/dragElement.js"
 import { addListenerOnInputForm } from '../../functions/behaviour/addListenerOnInputForm/addListenerOnInputForm.js'
 import { Connection } from "../Connection/Connection.js"
+import { Node } from "src/interfaces/Node/Node.js"
 
 export class NodeBuilder {
 
+    private node: Node
+
+    getNode() {
+        return this.node
+    }
 
 
     constructor({nodesConnector, positionX = 100, positionY = 200}: any) {
@@ -19,6 +25,9 @@ export class NodeBuilder {
             width: 100,
         })
 
+        this.node = node0
+
+        nodesConnector.addNode(this.node)
 
         const workspace = document.querySelector("#workspace")
 

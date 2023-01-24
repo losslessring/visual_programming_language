@@ -42,19 +42,6 @@ export class Connection {
 
         this.toX = toBoundingRect.left + (toBoundingRect.right - toBoundingRect.left) / 2
         this.toY = toBoundingRect.top + (toBoundingRect.bottom - toBoundingRect.top) / 2
-        
-        //const { left: x1, bottom: y1 } = this.fromElement.getBoundingClientRect()
-        //const { left: x2, bottom: y2 } = this.toElement.getBoundingClientRect()
-
-        // const x2 = this.toElement.getBoundingClientRect().left
-        // const y2 = this.toElement.getBoundingClientRect().bottom
-        
-        // console.log(x1)
-        // console.log(y1)
-        // console.log(x2)
-        // console.log(y2)
-        //const { x: x2, y: y2 } = this.toElement
-        //const coords = this.fromElement.getBoundingClientRect()
 
 
         document
@@ -70,14 +57,11 @@ export class Connection {
     }
 
     update() {
-        // console.log(this.fromElement)
-        // console.log(this.toElement)
-        // this.draw()
         
-        const line = document.querySelector(`#svg_line_${this.id}`)
-
         this.erase()
         this.draw()
+        
+        // const line = document.querySelector(`#svg_line_${this.id}`)
         // line?.setAttribute('x1', `${this.fromX}`)
         // line?.setAttribute('y1', `${this.fromY}`)
         // line?.setAttribute('x2', `${this.toX}`)

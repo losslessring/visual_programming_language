@@ -10,7 +10,7 @@ export class NodeModel implements Node {
     private height: number
     private width: number
     private input: Node | undefined
-    private output: Node | undefined
+    private output: Node[] | undefined
 
     
 
@@ -21,6 +21,7 @@ export class NodeModel implements Node {
         this.positionY = setup.positionY
         this.height = setup.height
         this.width = setup.width
+        this.output = []
     }
 
     getId(){
@@ -44,7 +45,7 @@ export class NodeModel implements Node {
     }
 
     setOutput(node: Node) {
-        this.output = node
+        this.output?.push(node)
     }
 
 
